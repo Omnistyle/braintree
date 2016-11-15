@@ -6,4 +6,4 @@ before_script:
   - sleep 3
 notifications:
   email:
-    - "external-ci-notifications+braintree_express_example@getbraintree.com"
+    - "luisperez@college.harvard.edu

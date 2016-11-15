@@ -1,27 +1,10 @@
-# Braintree Express Example
+# FastCart Braintree Server
 
 [![Build Status](https://travis-ci.org/braintree/braintree_express_example.svg?branch=master)](https://travis-ci.org/braintree/braintree_express_example)
 
-An example Braintree integration for Node in the Express framework.
-
-## Setup Instructions
-
-1. Install packages:
-
-   ```sh
-   npm install
-   ```
-
-2. Copy the contents of `example.env` into a new file named `.env` and fill in your Braintree API credentials. Credentials can be found by navigating to Account > My User > View Authorizations in the Braintree Control Panel. Full instructions can be [found on our support site](https://articles.braintreepayments.com/control-panel/important-gateway-credentials#api-credentials).
-
-3. Start the server:
-
-   ```sh
-   npm start
-   ```
 ## Deploying to Heroku
 
-You can deploy this app directly to Heroku to see the app live. Skip the setup instructions above and click the button below. This will walk you through getting this app up and running on Heroku in minutes.
+You can deploy this app directly to Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/braintree/braintree_express_example&env[BT_ENVIRONMENT]=sandbox)
 

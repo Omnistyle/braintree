@@ -89,4 +89,11 @@ router.post('/checkouts', function (req, res) {
   });
 });
 
+// API.
+router.get("/client_token", function (req, res) {
+  gateway.clientToken.generate({}, function (err, response) {
+    res.send(response.clientToken);
+  });
+});
+
 module.exports = router;
