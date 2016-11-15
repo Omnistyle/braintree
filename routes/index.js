@@ -89,10 +89,34 @@ router.post('/checkouts', function (req, res) {
   });
 });
 
-// API.
+// API. Obtain a client_token per checkout session.
+// Equivalent to /checkouts/new
 router.get("/client_token", function (req, res) {
   gateway.clientToken.generate({}, function (err, response) {
     res.send(response.clientToken);
+  });
+});
+
+router.post("/checkout", function (req, res) {
+  var nonceFromTheClient = req.body.payment_method_nonce;
+
+  var transactionErrors;
+  var amount = req.body.amount; // In production you should not take amounts directly from clients
+  var nonce = req.body.payment_method_nonce;
+
+  gateway.transaction.sale({
+    amount: amount,
+    paymentMethodNonce: nonce,
+    options: {
+      submitForSettlement: true
+    }
+  }, function (err, result) {
+    if (result.success || result.transaction) {
+      res.send("success")
+    } else {
+      transactionErrors = result.errors.deepErrors();
+      res.send("transaction error!")
+    }
   });
 });
 
