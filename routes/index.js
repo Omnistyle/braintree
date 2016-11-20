@@ -4,6 +4,7 @@ var express = require('express');
 var braintree = require('braintree');
 var router = express.Router(); // eslint-disable-line new-cap
 var gateway = require('../lib/gateway');
+var api = require('')
 
 var TRANSACTION_SUCCESS_STATUSES = [
   braintree.Transaction.Status.Authorizing,
@@ -89,14 +90,17 @@ router.post('/checkouts', function (req, res) {
   });
 });
 
-// API. Obtain a client_token per checkout session.
-// Equivalent to /checkouts/new
-router.get("/client_token", function (req, res) {
-  gateway.clientToken.generate({}, function (err, response) {
-    res.send(response.clientToken);
-  });
-});
+// API for BrainTree.
+// Obtain a client_token per checkout session.
+router.get("/client_token/:id", api.client_token);
 
+router.get("/customer/find/:id", api.customer.find);
+router.post("/customer/create", api.customer.create);
+
+router.get("/payment/find/:token", api.payment.find);
+router.post("/payment/create/", api.payment.create);
+
+// TODO: Move this logic to API.
 router.post("/checkout", function (req, res) {
   var nonceFromTheClient = req.body.payment_method_nonce;
 
