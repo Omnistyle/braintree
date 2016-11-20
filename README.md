@@ -1,6 +1,21 @@
 # FastCart Braintree Server
+Payment Processing for FastCart Shopping Application.
 
-[![Build Status](https://travis-ci.org/braintree/braintree_express_example.svg?branch=master)](https://travis-ci.org/braintree/braintree_express_example)
+## Setup Instructions
+
+1. Install packages:
+
+   ```sh
+   npm install
+   ```
+
+2. Check the contents of .env are correct.
+
+3. Start the server:
+
+   ```sh
+   npm start
+   ```
 
 ## Running tests
 

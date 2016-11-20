@@ -4,7 +4,11 @@ var express = require('express');
 var braintree = require('braintree');
 var router = express.Router(); // eslint-disable-line new-cap
 var gateway = require('../lib/gateway');
-var api = require('')
+
+var deps = {
+  gateway: gateway
+};
+var api = require('../lib/api')(deps);
 
 var TRANSACTION_SUCCESS_STATUSES = [
   braintree.Transaction.Status.Authorizing,
